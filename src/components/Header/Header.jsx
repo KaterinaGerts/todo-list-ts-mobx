@@ -1,6 +1,8 @@
+import './Header.scss';
+
 const Header = ({ title = 'Заметки' }) => {
   return (
-    <div>
+    <div className="titleWrap">
       <h1>{title}</h1>
     </div>
   );

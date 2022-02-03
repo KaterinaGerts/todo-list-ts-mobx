@@ -1,0 +1,32 @@
+// @import 'styles/shared.scss';
+
+.listContainer {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .list {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 400px;
+    border: 1px solid blue;
+  }
+}
+
+.text {
+  margin-right: 30px;
+}
+
+.isDone {
+  text-decoration: line-through;
+}
+
+.button {
+  width: 100px;
+  height: 30px;
+}

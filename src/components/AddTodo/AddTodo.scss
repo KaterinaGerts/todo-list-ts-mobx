@@ -1,0 +1,21 @@
+.TodoEditor {
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid blue;
+
+  .TodoEditorTextarea {
+    width: 300px;
+    height: 70px;
+  }
+
+  .TodoEditorButton {
+    width: 100px;
+    height: 30px;
+  }
+}

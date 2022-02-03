@@ -1,5 +1,5 @@
 [
-  { "id": "id-1", "text": "Написать заметки на классах", "completed": false },
+  { "id": "id-1", "text": "Написать заметки на классах", "completed": true },
   { "id": "id-2", "text": "Перенести классы на хуки", "completed": false },
   { "id": "id-3", "text": "Перенести стейт на mobX", "completed": false },
   { "id": "id-4", "text": "Добавить TypeScript", "completed": false }
