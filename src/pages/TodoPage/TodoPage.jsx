@@ -25,10 +25,6 @@ const TodoPage = () => {
     localStorage.setItem('task', JSON.stringify(taskList));
   }, [taskList]);
 
-  useEffect(() => {
-    setTaskList(taskList);
-  }, [taskList]);
-
   const deleteTodo = taskId => {
     setTaskList(taskList => taskList.filter(task => task.id !== taskId));
   };
