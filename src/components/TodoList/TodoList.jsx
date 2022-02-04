@@ -2,30 +2,27 @@ import { useState } from 'react';
 import cn from 'classnames';
 import './TodoList.scss';
 
-const STATUSES = {
+const STATUS = {
   ALL: 'all',
   COMPLETED: 'completed',
   NOT_COMPLETED: 'not completed',
 };
 
 const TodoList = ({ todos = [], onToggleCompleted, onDeleteTodo }) => {
-  const [filterStatus, setFilterStatus] = useState(STATUSES.ALL);
+  const [filterStatus, setFilterStatus] = useState(STATUS.ALL);
 
   return (
     <>
       <div className="filterContainer">
-        <button type="button" onClick={() => setFilterStatus(STATUSES.ALL)}>
-          Все задачи
+        <button type="button" onClick={() => setFilterStatus(STATUS.ALL)}>
+          Все заметки
         </button>
-        <button
-          type="button"
-          onClick={() => setFilterStatus(STATUSES.COMPLETED)}
-        >
+        <button type="button" onClick={() => setFilterStatus(STATUS.COMPLETED)}>
           Выполненные заметки
         </button>
         <button
           type="button"
-          onClick={() => setFilterStatus(STATUSES.NOT_COMPLETED)}
+          onClick={() => setFilterStatus(STATUS.NOT_COMPLETED)}
         >
           Невыполненные заметки
         </button>
@@ -34,10 +31,10 @@ const TodoList = ({ todos = [], onToggleCompleted, onDeleteTodo }) => {
         {todos &&
           todos
             .filter(task => {
-              if (filterStatus === STATUSES.COMPLETED) {
+              if (filterStatus === STATUS.COMPLETED) {
                 return task.completed;
               }
-              if (filterStatus === STATUSES.NOT_COMPLETED) {
+              if (filterStatus === STATUS.NOT_COMPLETED) {
                 return !task.completed;
               }
               return true;
