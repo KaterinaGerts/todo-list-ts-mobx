@@ -6,6 +6,7 @@ import todos from '../../todos';
 
 const TodoPage = () => {
   const [taskList, setTaskList] = useState(todos);
+  // const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     try {
@@ -24,6 +25,10 @@ const TodoPage = () => {
     localStorage.setItem('task', JSON.stringify(taskList));
   }, [taskList]);
 
+  useEffect(() => {
+    setTaskList(taskList);
+  }, [taskList]);
+
   const deleteTodo = taskId => {
     setTaskList(taskList => taskList.filter(task => task.id !== taskId));
   };
@@ -36,6 +41,14 @@ const TodoPage = () => {
     );
   };
 
+  const filteredTodo = status => {
+    if (status === 'all') {
+      setTaskList(taskList);
+    }
+    const filteredTasks = taskList.filter(task => task.completed === status);
+    setTaskList(filteredTasks);
+  };
+
   return (
     <div>
       <Header title="Список заметок" />
@@ -44,6 +57,7 @@ const TodoPage = () => {
         todos={taskList}
         onToggleCompleted={toggleCompleted}
         onDeleteTodo={deleteTodo}
+        onfilteredTodo={filteredTodo}
       />
     </div>
   );

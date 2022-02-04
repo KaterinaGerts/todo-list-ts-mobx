@@ -1,4 +1,15 @@
 // @import 'styles/shared.scss';
+.filterContainer {
+  width: 600px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  .filterLabel {
+    margin-right: 10px;
+  }
+}
 
 .listContainer {
   padding: 0;
