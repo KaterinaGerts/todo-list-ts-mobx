@@ -6,7 +6,6 @@ import todos from '../../todos';
 
 const TodoPage = () => {
   const [taskList, setTaskList] = useState(todos);
-  // const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     try {
@@ -37,14 +36,6 @@ const TodoPage = () => {
     );
   };
 
-  const filteredTodo = status => {
-    if (status === 'all') {
-      setTaskList(taskList);
-    }
-    const filteredTasks = taskList.filter(task => task.completed === status);
-    setTaskList(filteredTasks);
-  };
-
   return (
     <div>
       <Header title="Список заметок" />
@@ -53,7 +44,6 @@ const TodoPage = () => {
         todos={taskList}
         onToggleCompleted={toggleCompleted}
         onDeleteTodo={deleteTodo}
-        onfilteredTodo={filteredTodo}
       />
     </div>
   );
