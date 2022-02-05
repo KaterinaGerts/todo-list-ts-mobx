@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import shortid from 'shortid';
+import { useTodoStore } from 'mobx/todoContext';
+import { Observer } from 'mobx-react-lite';
 import './AddTodo.scss';
 
-const AddTodo = ({ todos, setTaskList }) => {
+const AddTodo = () => {
   const [task, setTask] = useState('');
+  const todoStore = useTodoStore();
 
   const handleChange = e => {
     setTask(e.currentTarget.value);
@@ -13,26 +15,29 @@ const AddTodo = ({ todos, setTaskList }) => {
     e.preventDefault();
     if (!task) return alert('Напишите заметку!');
     setTask('');
-    if (todos && todos.some(todo => todo.text === task))
+    if (todoStore.todos && todoStore.todos.some(todo => todo.text === task))
       return alert('Такая задача уже есть в списке!');
-    setTaskList(prevState => [
-      ...prevState,
-      { id: shortid.generate(), text: task, completed: false },
-    ]);
+    todoStore.addTodo(task);
     setTask('');
   };
 
   return (
-    <form className="TodoEditor" onSubmit={handleSubmit}>
-      <textarea
-        className="TodoEditorTextarea"
-        value={task}
-        onChange={handleChange}
-      ></textarea>
-      <button type="submit" className="TodoEditorButton">
-        Сохранить
-      </button>
-    </form>
+    <Observer>
+      {() => {
+        return (
+          <form className="TodoEditor" onSubmit={handleSubmit}>
+            <textarea
+              className="TodoEditorTextarea"
+              value={task}
+              onChange={handleChange}
+            ></textarea>
+            <button type="submit" className="TodoEditorButton">
+              Сохранить
+            </button>
+          </form>
+        );
+      }}
+    </Observer>
   );
 };
 
